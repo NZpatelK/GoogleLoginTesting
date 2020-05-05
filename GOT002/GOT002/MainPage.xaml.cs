@@ -19,6 +19,9 @@ namespace GOT002
     {
         Account account;
         AccountStore store;
+        User user = null;
+
+
         public MainPage()
         {
             InitializeComponent();
@@ -59,6 +62,7 @@ namespace GOT002
             var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
             presenter.Login(authenticator);
 
+            
         }
 
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
@@ -70,7 +74,7 @@ namespace GOT002
                 authenticator.Error -= OnAuthError;
             }
 
-            User user = null;
+            user = null;
 
             if(e.IsAuthenticated)
             {
@@ -92,6 +96,12 @@ namespace GOT002
                 await store.SaveAsync(account = e.Account, Constants.AppName);
                 await DisplayAlert("Email address", user.Email, "OK");
             }
+
+            signinGoogle.IsVisible = false;
+
+            name.Text = user.Name;
+            Email.Text = user.Email;
+            ID.Text = user.Id;
 
         }
 
