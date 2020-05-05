@@ -9,6 +9,14 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Button x:Name="signinGoogle" Text="Sign in with Google" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="signinGoogle_Clicked"/>
+
+        <Label x:Name="name"/>
+        <Label x:Name="Email"/>
+        <Label x:Name="ID"/>
+        
+
+
+
     </StackLayout>
 
 </ContentPage>
